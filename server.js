@@ -12,22 +12,22 @@ app.use(express.json())
 const quotes = [
     {
         quote: 'The best preparation for tomorrow is doing your best today.',
-        // author: 'H. Jackson Brown, Jr.',
+        author: 'H. Jackson Brown, Jr.',
         id: 1
     },
     {
         quote: 'The supreme art of war is to subdue the enemy without fighting.',
-        // author: 'Sun Tzu',
+        author: 'Sun Tzu',
         id: 2,
     },
     {
         quote: 'The journey of a thousand miles begins with one step.',
-        // author: 'Lao Tzu',
+        author: 'Lao Tzu',
         id: 3,
     },
     {
         quote: 'The World is my country, all mankind are my brethren, and to do good is my religion.',
-        //  author: 'Thomas Paine',
+         author: 'Thomas Paine',
          id: 4,
     },
 
