@@ -1,0 +1,56 @@
+
+import { useState } from "react";
+import { endPointAllQuotes } from "../utilities/globalVariables"
+import axios from "axios";
+const PostForm = ({onNewQuote}) => {
+    const [quotes, setQuotes] = useState([]);   
+    const [quoteText, setQuoteText] = useState("");
+    const [quoteName, setQuoteName] = useState("");
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const quote = {quoteText, quoteName}
+        const result = await axios.post(endPointAllQuotes, { quotes });
+        onNewQuote(result.data.quote);
+//         const response = await fetch(endPointAllQuotes, {
+//             method: "POST",
+//             body: JSON.stringify(quote),
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 }
+// })
+    const json = await result.json();
+    setQuotes(json.quote);
+    }
+    return (
+    <form onSubmit={handleSubmit}>
+        <label>Author: </label>
+        <input type="text"
+                onChange={(e) => e.target.value}
+                value={quoteName}/>
+        <label>Quote: </label>
+        <input type="text"
+                onQuote = {(e) => e.target.value}
+                value={quoteText}/>
+        <button type="submit">Submit</button>
+
+    </form>)
+
+}
+export default PostForm;
+
+// export default function PostForm() {
+//     const [quotes, setQuotes] = useState([])
+//     const [quoteText, setQuoteText] = useState("");
+//     const [quoteAuthor, setQuoteAuthor] = useState("");
+    
+//     const handleSubmit = async (e) => {
+//         e.preventDefault();
+//     }
+//     return (
+//         <form onSubmit={handleSubmit}>
+//             <label htmlFor="text">Quote: </label>
+//             <input type="text" id="quoteText" name="quoteText" value={quoteText} onChange={(e) => setQuoteText(e.target.value)}/>
+//         </form>
+//     )
+// }
